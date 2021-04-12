@@ -1,11 +1,12 @@
-require('dotenv').config()
-const express = require('express')
-const morgan = require('morgan')
-const cors = require('cors')
-const helmet = require('helmet')
-const MOVIES = require('./movies-data-small.json')
+require('dotenv').config();
 
-const app = express()
+const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
+const helmet = require('helmet');
+const MOVIES = require('./movies-data-small.json');
+
+const app = express();
 
 app.use(morgan('dev'))
 app.use(cors())
@@ -31,13 +32,15 @@ app.get('/movie', function handleGetMovie(req, res) {
     )
   }
 
-  if (req.query.country) {
+  if (req.query.country) 
+  {
     response = response.filter(movie =>
       movie.country.toLowerCase().includes(req.query.country.toLowerCase())
     )
   }
 
-  if (req.query.avg_vote) {
+  if (req.query.avg_vote) 
+  {
     response = response.filter(movie =>
       Number(movie.avg_vote) >= Number(req.query.avg_vote)
     )
